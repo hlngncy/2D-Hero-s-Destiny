@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Helen : Player
+public class Helen : PlayerController
 {
     public override void Run()
     {

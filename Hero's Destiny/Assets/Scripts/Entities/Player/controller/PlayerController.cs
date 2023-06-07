@@ -1,23 +1,18 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class Player : MonoBehaviour,IDamageObserver
+public abstract class PlayerController : MonoBehaviour,IDamageObserver
 {
-    [SerializeField] protected Animator _animator;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] protected PlayerSO playerStats;
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] protected Transform attackPoint;
     [SerializeField] protected LayerMask layer;
-    protected List<Collider2D> hitEnemies;
     private Vector2 moveInput;
     private Vector2 Velocity;
     private Coroutine crouchCoroutine;
-    private bool isCrouch;
     private InputAction.CallbackContext moveContext;
     private bool canAttack = true;
     private float attackStartTime = 0;
@@ -25,6 +20,10 @@ public abstract class Player : MonoBehaviour,IDamageObserver
     private float heavyAttackCooldown;
     private bool isNormalAttack;
 
+
+    //events
+    [SerializeField] private PlayerEvents _playerEvents;
+    
 
     private void Start()
     {
@@ -34,33 +33,28 @@ public abstract class Player : MonoBehaviour,IDamageObserver
         heavyAttackCooldown = playerStats.heavyAttackCooldown;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Run();
         FlipSprite();
-        CheckAnimStates();
         Tick(attackStartTime, isNormalAttack);
     }
-
-    private void CheckAnimStates()
-    {
-        _animator.SetFloat("AirSpeedY", rb.velocity.y);
-        _animator.SetBool("isGrounded", playerCollider.IsTouchingLayers(LayerMask.GetMask("Platform")));
-    }
-
+    
     private void FlipSprite()
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
         if (playerHasHorizontalSpeed)
         {
             transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f);
-            _animator.SetInteger("AnimState",1);
+            _playerEvents.OnRun();
         }
         else
         {
-            _animator.SetInteger("AnimState",0);
+            _playerEvents.OnIdle();
         }
     }
+    
+    
 
     public virtual void Run()
     {
@@ -84,7 +78,7 @@ public abstract class Player : MonoBehaviour,IDamageObserver
         if (context.started)
         {
             rb.velocity += rb.velocity = new Vector2(0,moveInput.y * Velocity.y);
-            _animator.SetTrigger("Jump");
+            _playerEvents.OnJump();
         }
         else
         {
@@ -94,7 +88,6 @@ public abstract class Player : MonoBehaviour,IDamageObserver
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        isCrouch = true;
         if (context.started)
            crouchCoroutine = StartCoroutine(Crouch(context));
     }
@@ -103,7 +96,8 @@ public abstract class Player : MonoBehaviour,IDamageObserver
     {
         float sizey = playerCollider.size.y;
         
-        _animator.SetBool("Crouch",true);
+        _playerEvents.OnCrouch(true);
+        
         this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + 1);
         playerCollider.offset = new Vector2(playerCollider.offset.x, -1.7f);
         Velocity.x *= .5f;
@@ -114,12 +108,11 @@ public abstract class Player : MonoBehaviour,IDamageObserver
             yield return null;
         }
         
-        _animator.SetBool("Crouch", false);
+        _playerEvents.OnCrouch(false);
+        
         Velocity.x *= 2f;
         playerCollider.size = new Vector2(playerCollider.size.x,sizey);
         playerCollider.offset = new Vector2(playerCollider.offset.x, -0.55f);
-        if(_animator.GetBool("isGrounded")) _animator.ResetTrigger("Jump");
-        isCrouch = false;
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -135,13 +128,12 @@ public abstract class Player : MonoBehaviour,IDamageObserver
 
     public virtual void NormalAttack()
     {
-        _animator.SetTrigger("Attack");
+        _playerEvents.OnAttack();
     }
 
     public virtual void HeavyAttack()
     {
-        Debug.Log("heavyattack");
-        _animator.SetTrigger("HeavyAttack");
+        _playerEvents.OnHeavyAttack();
     }
     public void OnHeavyAttack(InputAction.CallbackContext context)
     {
@@ -155,7 +147,11 @@ public abstract class Player : MonoBehaviour,IDamageObserver
 
     public void Hurt(int damage)
     {
-        _animator.SetTrigger("Hurt");
+        _playerEvents.OnHurt(damage);
+    }
+    public void Die()
+    {
+        _playerEvents.OnDie();
     }
 
     public void Tick(float startTime, bool isNormal)
