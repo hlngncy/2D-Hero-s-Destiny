@@ -14,7 +14,8 @@ public class PlayerEvents : MonoBehaviour
     private UnityEvent _attack = new UnityEvent();
     private UnityEvent _heavyAttack = new UnityEvent();
     private UnityEvent _die = new UnityEvent();
-    private UnityEvent<int> _hurt = new UnityEvent<int>();
+    private UnityEvent<int, int> _hurt = new UnityEvent<int, int>();
+    //current health, difference(+,-)
 
 
 
@@ -51,6 +52,20 @@ public class PlayerEvents : MonoBehaviour
         }
     }
     
+    public void AddListeners(IModelEventListener listener, PlayerEventEnum playerEvent)
+    {
+        switch (playerEvent)
+        {
+            case PlayerEventEnum.Die:
+                _die.AddListener(listener.OnDie);
+                break;
+            case PlayerEventEnum.Hurt:
+                _hurt.AddListener(listener.OnHurt);
+                break;
+            default:
+                throw new InvalidDataException("Invalid event request.");
+        }
+    }
 
     public void OnRun()
     {
@@ -89,10 +104,11 @@ public class PlayerEvents : MonoBehaviour
         _die.Invoke();
     }
     
-    public void OnHurt(int damage)
+    public void OnHurt(int damage, int currentHealth)
     {
-        _hurt.Invoke(damage);
+        _hurt.Invoke(damage, currentHealth);
     }
+    
 }
 
 

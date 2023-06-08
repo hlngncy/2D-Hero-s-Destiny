@@ -6,32 +6,30 @@ using UnityEngine.InputSystem;
 public abstract class PlayerController : MonoBehaviour,IDamageObserver
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] protected PlayerSO playerStats;
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] protected Transform attackPoint;
     [SerializeField] protected LayerMask layer;
+    [SerializeField] private PlayerModel _playerModelObj;
+    protected IModel _playerModel;
     private Vector2 moveInput;
-    private Vector2 Velocity;
+    private Vector2 _playerVelocity;
     private Coroutine crouchCoroutine;
     private InputAction.CallbackContext moveContext;
     private bool canAttack = true;
     private float attackStartTime = 0;
-    private float attackCooldown;
-    private float heavyAttackCooldown;
     private bool isNormalAttack;
-
-
+    
     //events
     [SerializeField] private PlayerEvents _playerEvents;
     
-
     private void Start()
     {
-        Velocity.x = playerStats.movementSpeed;
-        Velocity.y = playerStats.jumpPower;
-        attackCooldown = playerStats.attackCooldown;
-        heavyAttackCooldown = playerStats.heavyAttackCooldown;
+        _playerModel = _playerModelObj;
+        _playerVelocity.x = _playerModel.MovementSpeed;
+        _playerVelocity.y = _playerModel.JumpPower;
+        _playerModel.CurrentHealth.OnValueChanged.AddListener(CheckHealth);
     }
+    
 
     private void FixedUpdate()
     {
@@ -58,7 +56,7 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
 
     public virtual void Run()
     {
-        rb.velocity = new Vector2(moveInput.x * Velocity.x,rb.velocity.y);
+        rb.velocity = new Vector2(moveInput.x * _playerVelocity.x,rb.velocity.y);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -77,7 +75,7 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
 
         if (context.started)
         {
-            rb.velocity += rb.velocity = new Vector2(0,moveInput.y * Velocity.y);
+            rb.velocity += rb.velocity = new Vector2(0,moveInput.y * _playerVelocity.y);
             _playerEvents.OnJump();
         }
         else
@@ -100,7 +98,7 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
         
         this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + 1);
         playerCollider.offset = new Vector2(playerCollider.offset.x, -1.7f);
-        Velocity.x *= .5f;
+        _playerVelocity.x *= .5f;
         playerCollider.size = new Vector2(playerCollider.size.x,sizey/2);
         
         while (context.phase != InputActionPhase.Waiting)
@@ -110,7 +108,7 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
         
         _playerEvents.OnCrouch(false);
         
-        Velocity.x *= 2f;
+        _playerVelocity.x *= 2f;
         playerCollider.size = new Vector2(playerCollider.size.x,sizey);
         playerCollider.offset = new Vector2(playerCollider.offset.x, -0.55f);
     }
@@ -147,8 +145,14 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
 
     public void Hurt(int damage)
     {
-        _playerEvents.OnHurt(damage);
+        _playerEvents.OnHurt(damage , _playerModel.CurrentHealth.Value );
     }
+    
+    private void CheckHealth(int previousHealth, int currentHealth)
+    {
+        if(currentHealth <= 0) Die();
+    }
+    
     public void Die()
     {
         _playerEvents.OnDie();
@@ -161,6 +165,7 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
             return;
         }
 
-        canAttack = startTime + (isNormal ? attackCooldown : heavyAttackCooldown) < Time.time;
+        canAttack = startTime + (isNormal ? _playerModel.AttackCooldown : _playerModel.HeavyAttackCooldown) < Time.time;
     }
+
 }

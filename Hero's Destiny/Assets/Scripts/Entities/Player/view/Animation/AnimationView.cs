@@ -62,7 +62,7 @@ public class AnimationView : MonoBehaviour,IView, IEventListener
     }
     
 
-    public void OnHurt(int damage)
+    public void OnHurt(int damage, int currentHealth)
     {
         _animator.SetTrigger("Hurt");
     }

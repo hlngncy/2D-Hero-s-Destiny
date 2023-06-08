@@ -10323,8 +10323,9 @@ GameObject:
   - component: {fileID: 653861050}
   - component: {fileID: 653861049}
   - component: {fileID: 653861056}
+  - component: {fileID: 653861057}
   m_Layer: 7
-  m_Name: Helen(Player) (1)
+  m_Name: Helen(Player)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10343,12 +10344,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 653861052}
-  playerStats: {fileID: 11400000, guid: eca6428679aa5024489d86eb6a4bacfd, type: 2}
   playerCollider: {fileID: 653861051}
   attackPoint: {fileID: 1031094130}
   layer:
     serializedVersion: 2
     m_Bits: 768
+  _playerModelObj: {fileID: 653861057}
   _playerEvents: {fileID: 1662336781}
 --- !u!114 &653861050
 MonoBehaviour:
@@ -10657,6 +10658,20 @@ MonoBehaviour:
   events: {fileID: 1662336781}
   rb: {fileID: 653861052}
   playerCollider: {fileID: 653861051}
+--- !u!114 &653861057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653861048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c736642ff362e64e819a53ad21580fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerData: {fileID: 11400000, guid: eca6428679aa5024489d86eb6a4bacfd, type: 2}
+  _events: {fileID: 1662336781}
 --- !u!1 &657940743
 GameObject:
   m_ObjectHideFlags: 0
