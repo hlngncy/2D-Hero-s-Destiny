@@ -27,9 +27,4 @@ public class Helen : PlayerController
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _playerModel.AttackRange,layer);
         DamageActionController.Instance.DoDamage(hitEnemies, _playerModel.HeavyAttackPower);
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(attackPoint.position, _playerModel.AttackRange);
-    }
 }

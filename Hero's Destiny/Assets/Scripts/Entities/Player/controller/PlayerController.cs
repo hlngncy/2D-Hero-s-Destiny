@@ -17,6 +17,7 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
     private bool canAttack = true;
     private float attackStartTime = 0;
     private bool isNormalAttack;
+    private bool isCrouch = false;
     
     //events
     [SerializeField] private PlayerEvents _playerEvents;
@@ -91,6 +92,7 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
 
     IEnumerator Crouch(InputAction.CallbackContext context)
     {
+        isCrouch = true;
         float sizey = playerCollider.size.y;
         
         _playerEvents.OnCrouch(true);
@@ -106,7 +108,7 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
         }
         
         _playerEvents.OnCrouch(false);
-        
+        isCrouch = false;
         _playerVelocity.x *= 2f;
         playerCollider.size = new Vector2(playerCollider.size.x,sizey);
         playerCollider.offset = new Vector2(playerCollider.offset.x, -0.55f);
@@ -114,7 +116,7 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.started && (!isNormalAttack || canAttack))
+        if (context.started && (!isNormalAttack || canAttack) && !isCrouch)
         {
             attackStartTime = Time.time;
             isNormalAttack = true;
@@ -134,7 +136,7 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
     }
     public void OnHeavyAttack(InputAction.CallbackContext context)
     {
-        if (context.started && canAttack)
+        if (context.started && canAttack && !isCrouch)
         {
             attackStartTime = Time.time;
             isNormalAttack = false;
