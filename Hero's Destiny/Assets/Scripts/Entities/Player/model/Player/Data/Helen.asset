@@ -18,6 +18,6 @@ MonoBehaviour:
   heavyAttackPower: 20
   heavyAttackCooldown: 2
   attackCooldown: 0.5
-  maxHealth: 0
+  maxHealth: 300
   movementSpeed: 15
   jumpPower: 23

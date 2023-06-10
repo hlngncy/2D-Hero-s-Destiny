@@ -17,7 +17,7 @@ TagManager:
   - Enemy
   - Entity
   - AttackCollider
-  - 
+  - Dead
   - 
   - 
   - 
@@ -50,6 +50,9 @@ TagManager:
     locked: 0
   - name: Entity
     uniqueID: 3281777913
+    locked: 0
+  - name: Dead
+    uniqueID: 2296910581
     locked: 0
   - name: Enemy
     uniqueID: 3434513891

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,9 +7,13 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private BoxCollider2D playerCollider;
+    [SerializeField] private PlayerInput _playerInput;
     [SerializeField] protected Transform attackPoint;
     [SerializeField] protected LayerMask layer;
-    [SerializeField] private PlayerModel _playerModelObj;
+    
+    public bool isDead => _isDead;
+
+
     protected IModel _playerModel;
     private Vector2 moveInput;
     private Vector2 _playerVelocity;
@@ -18,15 +23,35 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
     private float attackStartTime = 0;
     private bool isNormalAttack;
     private bool isCrouch = false;
+    private bool _isDead;
     
     //events
     [SerializeField] private PlayerEvents _playerEvents;
     
+    //views
+    [SerializeField] private PlayerUIView _UIView;
+    [SerializeField] private AnimationView _animationView;
+    
+    //models
+    [SerializeField] private PlayerModel _playerModelObj;
+
+    private List<IEventListener> _eventListeners = new List<IEventListener>();
+
+    private void Awake()
+    {
+        _eventListeners.Add(_UIView);
+        _eventListeners.Add(_animationView);
+        _playerEvents.EventListeners = _eventListeners;
+        _playerEvents.AddListeners(_playerModelObj);
+        _playerEvents.AddListeners();
+        _playerModel = _playerModelObj;
+    }
+
     private void Start()
     {
-        _playerModel = _playerModelObj;
         _playerVelocity.x = _playerModel.MovementSpeed;
         _playerVelocity.y = _playerModel.JumpPower;
+        _UIView.maxHealth = _playerModel.CurrentHealth.Value;
         _playerModel.CurrentHealth.OnValueChanged.AddListener(CheckHealth);
     }
     
@@ -156,6 +181,9 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
     
     public void Die()
     {
+        _isDead = true;
+        _playerInput.DeactivateInput();
+        this.gameObject.layer = LayerMask.NameToLayer("Dead");
         _playerEvents.OnDie();
     }
 

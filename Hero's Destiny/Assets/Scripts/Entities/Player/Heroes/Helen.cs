@@ -13,18 +13,20 @@ public class Helen : PlayerController
     {
         base.NormalAttack();
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _playerModel.AttackRange,layer);
-        DamageActionController.Instance.DoDamage(hitEnemies, _playerModel.AttackPower);
+        DamageActionManager.Instance.DoDamage(hitEnemies, _playerModel.AttackPower);
     }
     
     public override void HeavyAttack()
     {
         base.HeavyAttack();
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _playerModel.AttackRange,layer);
-        DamageActionController.Instance.DoDamage(hitEnemies, _playerModel.HeavyAttackPower);
+        if(hitEnemies.Length == 0) return;
+        DamageActionManager.Instance.DoDamage(hitEnemies, _playerModel.HeavyAttackPower);
     }
     public void HeavyAttackSecondHit()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _playerModel.AttackRange,layer);
-        DamageActionController.Instance.DoDamage(hitEnemies, _playerModel.HeavyAttackPower);
+        if(hitEnemies.Length == 0) return;
+        DamageActionManager.Instance.DoDamage(hitEnemies, _playerModel.HeavyAttackPower);
     }
 }
