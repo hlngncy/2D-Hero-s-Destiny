@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour,IDamageObserver
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 5, layer);
         if(hitEnemies.Length == 0) return;
-        DamageActionManager.Instance.DoDamage(hitEnemies, 100);
+        DamageActionManager.Instance.DoDamage(hitEnemies, 10);
     }
 
 }
