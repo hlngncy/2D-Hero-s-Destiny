@@ -1,18 +1,36 @@
+using System;
 using System.Collections;
+using Pathfinding;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour,IDamageObserver
 {
     [SerializeField] private LayerMask layer;
+    [SerializeField] private AIPath _path;
+    private int maxHealth = 100;
+    [SerializeField] private Animator _animator;
+    public bool isDead => _isDead;
+    private bool _isDead;
+    
+    
     private void Start()
     {
         StartCoroutine(DoDamageC());
     }
 
-    private int maxHealth = 100;
-    [SerializeField] private Animator _animator;
-    public bool isDead => _isDead;
-    private bool _isDead;
+    private void FixedUpdate()
+    {
+        FlipSprite();
+    }
+
+    private void FlipSprite()
+    {
+        bool playerHasHorizontalSpeed = Mathf.Abs(_path.desiredVelocity.x) > Mathf.Epsilon;
+        if (playerHasHorizontalSpeed)
+        {
+            transform.localScale = new Vector2(Mathf.Sign(_path.desiredVelocity.x), 1f);
+        }
+    }
 
     public void Hurt(int damage)
     {

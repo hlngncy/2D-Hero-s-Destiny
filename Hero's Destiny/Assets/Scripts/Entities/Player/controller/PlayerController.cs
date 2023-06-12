@@ -103,10 +103,6 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
             rb.velocity += rb.velocity = new Vector2(0,moveInput.y * _playerVelocity.y);
             _playerEvents.OnJump();
         }
-        else
-        {
-            
-        }
     }
 
     public void OnCrouch(InputAction.CallbackContext context)

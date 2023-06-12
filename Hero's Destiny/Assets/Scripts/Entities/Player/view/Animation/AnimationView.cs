@@ -59,11 +59,18 @@ public class AnimationView : MonoBehaviour,IView, IEventListener
 
     public void OnAttack()
     {
+        _animator.SetBool("isAttacking", true);
         _animator.SetTrigger("Attack");
     }
 
     public void OnHeavyAttack()
     {
+        _animator.SetBool("isAttacking", true);
         _animator.SetTrigger("HeavyAttack");
+    }
+
+    public void OnAttackEnd()
+    {
+        _animator.SetBool("isAttacking", false);
     }
 }
