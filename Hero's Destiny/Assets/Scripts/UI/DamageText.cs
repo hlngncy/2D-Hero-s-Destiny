@@ -21,7 +21,7 @@ public class DamageText : MonoBehaviour
     {
         _startScale = transform.localScale;
         transform.localPosition = Vector3.zero;
-        transform.DOLocalMove(new Vector2(0,.2f), .3f).SetEase(Ease.OutExpo).OnComplete(
+        transform.DOLocalMove(new Vector2(0,.2f), .5f).SetEase(Ease.OutExpo).OnComplete(
             ()=> DamageTextPool.Instance.ReleaseDamageText(this,_startScale));
     }
 
