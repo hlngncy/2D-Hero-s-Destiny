@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public abstract class PlayerController : MonoBehaviour,IDamageObserver
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private BoxCollider2D playerCollider;
+    [SerializeField] private CapsuleCollider2D playerCollider;
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] protected Transform attackPoint;
     [SerializeField] protected LayerMask layer;

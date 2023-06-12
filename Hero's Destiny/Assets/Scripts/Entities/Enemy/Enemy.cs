@@ -9,8 +9,12 @@ public class Enemy : MonoBehaviour,IDamageObserver
     [SerializeField] private AIPath _path;
     private int maxHealth = 100;
     [SerializeField] private Animator _animator;
+    [SerializeField] private Collider2D _attackArea;
+    [SerializeField] private AIDestinationSetter _aiDestinationSetter;
+    [SerializeField] private Patrol _patrol;
     public bool isDead => _isDead;
     private bool _isDead;
+    
     
     
     private void Start()
@@ -21,6 +25,19 @@ public class Enemy : MonoBehaviour,IDamageObserver
     private void FixedUpdate()
     {
         FlipSprite();
+    }
+
+    private void Update()
+    {
+        CheckPlayer();
+    }
+
+    private void CheckPlayer()
+    {
+        bool isTherePlayer = _attackArea.IsTouchingLayers(layer);
+        _aiDestinationSetter.enabled = isTherePlayer;
+        _patrol.enabled = !isTherePlayer;
+
     }
 
     private void FlipSprite()

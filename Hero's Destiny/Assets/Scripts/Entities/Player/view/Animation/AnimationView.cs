@@ -5,7 +5,7 @@ public class AnimationView : MonoBehaviour,IView, IEventListener
     [SerializeField] private Animator _animator;
     [SerializeField] private PlayerEvents events;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private BoxCollider2D playerCollider;
+    [SerializeField] private Collider2D playerCollider;
 
     private void Update()
     {

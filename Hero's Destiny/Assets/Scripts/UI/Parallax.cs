@@ -10,9 +10,10 @@ public class Parallax : MonoBehaviour
     private Vector2 cameraOldPos;
     private Vector2 cameraPosDiff;
 
-    private void Start()
+    private void Awake()
     {
         cameraOldPos = virtualCamera.transform.position;
+        transform.position = new Vector2(cameraOldPos.x, cameraOldPos.y - 2);
     }
 
     void FixedUpdate()
