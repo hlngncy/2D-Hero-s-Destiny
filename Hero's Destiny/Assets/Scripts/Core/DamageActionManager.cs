@@ -10,7 +10,7 @@ public class DamageActionManager : Singleton<DamageActionManager>
     {
         for (int i = 0; i < entities.Length; i++)
         {
-            entities[i].GetComponent<IDamageObserver>().Hurt(damage);
+            entities[i].GetComponent<IController>().Hurt(damage);
         }
     }
 }

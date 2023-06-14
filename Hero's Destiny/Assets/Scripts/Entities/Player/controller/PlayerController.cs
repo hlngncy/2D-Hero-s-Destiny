@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class PlayerController : MonoBehaviour,IDamageObserver
+public abstract class PlayerController : MonoBehaviour,IController
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private CapsuleCollider2D playerCollider;
@@ -181,6 +181,7 @@ public abstract class PlayerController : MonoBehaviour,IDamageObserver
         _playerInput.DeactivateInput();
         this.gameObject.layer = LayerMask.NameToLayer("Dead");
         _playerEvents.OnDie();
+        this.enabled = false;
     }
 
     public void Tick(float startTime, bool isNormal)
