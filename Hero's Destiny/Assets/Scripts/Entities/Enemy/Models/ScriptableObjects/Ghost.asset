@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Ghost
   attackRange: 5
-  attackPower: 100
+  attackPower: 10
   heavyAttackPower: 0
   heavyAttackCooldown: 0
   attackCooldown: 3

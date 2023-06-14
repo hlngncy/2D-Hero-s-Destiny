@@ -79,7 +79,7 @@ public abstract class PlayerController : MonoBehaviour,IController
     
     
 
-    public virtual void Run()
+    public void Run()
     {
         rb.velocity = new Vector2(moveInput.x * _playerVelocity.x,rb.velocity.y);
     }
@@ -146,12 +146,12 @@ public abstract class PlayerController : MonoBehaviour,IController
     }
 
 
-    public virtual void NormalAttack()
+    protected virtual void NormalAttack()
     {
         _playerEvents.OnAttack();
     }
 
-    public virtual void HeavyAttack()
+    protected virtual void HeavyAttack()
     {
         _playerEvents.OnHeavyAttack();
     }

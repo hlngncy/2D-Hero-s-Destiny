@@ -4,7 +4,7 @@ using Pathfinding;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class  Enemy : MonoBehaviour,IController
+public abstract class EnemyController : MonoBehaviour,IController
 {
 
     //views
@@ -12,11 +12,10 @@ public class  Enemy : MonoBehaviour,IController
     [SerializeField] private EnemyUIView _enemyUIView;
     
     //model
-    [SerializeField] private EnemySO _enemyStats;
+    [SerializeField] protected EnemySO _enemyStats;
 
     //events
     private UnityEvent _attack = new UnityEvent();
-    private UnityEvent _heavyAttack = new UnityEvent();
     private UnityEvent<int> _hurt = new UnityEvent<int>();
     private UnityEvent _dead = new UnityEvent();
     private UnityEvent<bool> _run = new UnityEvent<bool>();
@@ -24,7 +23,7 @@ public class  Enemy : MonoBehaviour,IController
     private UnityEvent _enemyDetect = new UnityEvent();
 
     //fields
-    [SerializeField] private LayerMask layer;
+    [SerializeField] protected LayerMask layer;
     public bool isDead => _isDead;
     private bool _isDead;
     private IEnumerator _attackRoutine;
@@ -84,9 +83,9 @@ public class  Enemy : MonoBehaviour,IController
     private void FlipSprite()
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(_path.desiredVelocity.x) > Mathf.Epsilon;
+        _run.Invoke(playerHasHorizontalSpeed);
         if (playerHasHorizontalSpeed)
         {
-            _run.Invoke(playerHasHorizontalSpeed);
             transform.localScale = new Vector2(Mathf.Sign(_path.desiredVelocity.x), 1f);
         }
     }
@@ -99,13 +98,10 @@ public class  Enemy : MonoBehaviour,IController
     }
 
     
-    private void DoDamage()
+    protected virtual void DoDamage()
     {
         _attackStartTime = Time.time;
         _attack.Invoke();
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, _enemyStats.attackRange, layer);
-        if(hitEnemies.Length == 0) return;
-        DamageActionManager.Instance.DoDamage(hitEnemies, _enemyStats.attackPower);
     }
 
     public void Die()

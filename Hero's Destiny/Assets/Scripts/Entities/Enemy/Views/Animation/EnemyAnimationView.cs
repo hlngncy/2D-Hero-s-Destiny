@@ -14,7 +14,7 @@ public class EnemyAnimationView : MonoBehaviour,IEnemyAnimView
 
     public void OnAttack()
     {
-        //_animator.SetTrigger("attack");
+        _animator.SetTrigger("attack");
     }
 
     public void OnDead()
@@ -24,6 +24,6 @@ public class EnemyAnimationView : MonoBehaviour,IEnemyAnimView
 
     public void OnRun(bool isMoving)
     {
-        //_animator.SetInteger("AnimState", isMoving? 1 : 0);
+        _animator.SetInteger("AnimState", isMoving? 1 : 0);
     }
 }
