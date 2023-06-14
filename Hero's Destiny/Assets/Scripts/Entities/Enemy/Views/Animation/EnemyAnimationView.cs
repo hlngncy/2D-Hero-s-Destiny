@@ -1,21 +1,16 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
 public class EnemyAnimationView : MonoBehaviour,IEnemyAnimView
 {
     [SerializeField] private Animator _animator;
-    
 
-    private void Update()
-    {
-        
-    }
 
     public void OnHurt(int damage)
     {
         _animator.SetTrigger("hurt");
     }
+
 
     public void OnAttack()
     {
