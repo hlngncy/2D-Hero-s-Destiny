@@ -19,7 +19,8 @@ public class EnemyAnimationView : MonoBehaviour,IEnemyAnimView
 
     public void OnDead()
     {
-        this.transform.DOScale(Vector3.zero, .5f);
+        _animator.SetBool("isDead", true);
+        _animator.SetTrigger("die");
     }
 
     public void OnRun(bool isMoving)
