@@ -13,7 +13,7 @@ public class Parallax : MonoBehaviour
     private void Awake()
     {
         cameraOldPos = virtualCamera.transform.position;
-        transform.position = new Vector2(cameraOldPos.x, cameraOldPos.y - 2);
+        transform.position = new Vector3(cameraOldPos.x, cameraOldPos.y - 2, transform.position.z);
     }
 
     void FixedUpdate()
