@@ -7,26 +7,31 @@ public class EnemyUIView : MonoBehaviour, IEnemyUIView
 {
     //[SerializeField] private Slider _healthBarSlider;
     [SerializeField] private GameObject _enemy;
-    [SerializeField] private GameObject _playerDetected;
+    [SerializeField] private SpriteRenderer _healthSign;
+    [SerializeField] private Gradient _healthGradient;
 
-    public void OnHurt(int damage)
+    private float _newHealth;
+    public void OnHurt(int damage, int currentHealth, int maxHealth)
     {
+        _newHealth = (float)currentHealth / maxHealth;
         DamageTextPool.Instance.GetDamageText(_enemy.transform, damage);
+        _healthSign.color = _healthGradient.Evaluate(_newHealth);
     }
 
     public void OnDead()
     {
-        _playerDetected.SetActive(false);
+        //_playerDetected.SetActive(false);
+        _healthSign.gameObject.SetActive(false);
     }
 
     public void OnEnemyDetect()
     {
-        _playerDetected.SetActive(true);
+        _healthSign.gameObject.SetActive(true);
     }
 
     public void OnIdle()
     {
-        _playerDetected.SetActive(false);
+        _healthSign.gameObject.SetActive(false);
     }
 
 }

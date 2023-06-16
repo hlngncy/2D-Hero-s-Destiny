@@ -16,7 +16,7 @@ public abstract class EnemyController : MonoBehaviour,IController
 
     //events
     private UnityEvent _attack = new UnityEvent();
-    private UnityEvent<int> _hurt = new UnityEvent<int>();
+    private UnityEvent<int, int, int> _hurt = new UnityEvent<int, int, int>();
     private UnityEvent _dead = new UnityEvent();
     private UnityEvent<bool> _run = new UnityEvent<bool>();
     private UnityEvent _idle = new UnityEvent();
@@ -94,7 +94,7 @@ public abstract class EnemyController : MonoBehaviour,IController
     {
         _maxHealth -= damage;
         if(_maxHealth <= 0) Die();
-        _hurt.Invoke(damage);
+        _hurt.Invoke(damage , _maxHealth, _enemyStats.maxHealth);
     }
 
     
