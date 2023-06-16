@@ -54,6 +54,7 @@ public abstract class EnemyController : MonoBehaviour,IController
         _attack.AddListener(_enemyAnimationView.OnAttack);
         _dead.AddListener(_enemyAnimationView.OnDead);
         _run.AddListener(_enemyAnimationView.OnRun);
+        _aiDestinationSetter.target = GameObject.FindWithTag("Player").transform;
     }
 
     private void FixedUpdate()

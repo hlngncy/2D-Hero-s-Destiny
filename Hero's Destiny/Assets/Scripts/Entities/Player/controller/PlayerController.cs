@@ -123,13 +123,13 @@ public abstract class PlayerController : MonoBehaviour,IController
         playerCollider.offset = new Vector2(playerCollider.offset.x, -1.7f);
         //_playerVelocity.x *= .5f;
         playerCollider.size = new Vector2(playerCollider.size.x,sizey/2);
-        
+        _playerVelocity.x *= 1.5f;
         while (context.phase != InputActionPhase.Waiting)
         {
-            _playerVelocity.x *= .9f;
+            _playerVelocity.x *= .8f;
+            if (Mathf.Abs(_playerVelocity.x) < 3f) break;
             yield return new WaitForSeconds(.2f);
         }
-        
         _playerEvents.OnCrouch(false);
         isCrouch = false;
         _playerVelocity.x = firstVelocityY;
