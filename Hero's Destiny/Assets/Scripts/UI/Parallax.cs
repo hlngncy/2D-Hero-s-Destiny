@@ -19,7 +19,7 @@ public class Parallax : MonoBehaviour
     void FixedUpdate()
     { 
         cameraPosDiff = (Vector2)virtualCamera.transform.position - cameraOldPos;
-        transform.position += new Vector3(cameraPosDiff.x *speed  , cameraPosDiff.y *.6f);
+        transform.position += new Vector3(cameraPosDiff.x *speed  , cameraPosDiff.y);
         cameraOldPos = virtualCamera.transform.position;
     }
 }

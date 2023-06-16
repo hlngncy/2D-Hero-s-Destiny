@@ -75,10 +75,12 @@ public abstract class EnemyController : MonoBehaviour,IController
         _patrol.enabled = !isTherePlayer;
         if(isTherePlayer) _enemyDetect.Invoke();
         else _idle.Invoke();
-        if (_path.whenCloseToDestination == CloseToDestinationMode.Stop && isTherePlayer && _canAttack)
+        if ( _path.reachedEndOfPath && isTherePlayer && _canAttack)
         {
+            Debug.Log("attack enemy");
             DoDamage();
         }
+        
     }
 
     private void FlipSprite()
@@ -109,10 +111,19 @@ public abstract class EnemyController : MonoBehaviour,IController
     {
         _path.enabled = false;
         _aiDestinationSetter.enabled = false;
+        _patrol.enabled = false;
         this.gameObject.layer = LayerMask.NameToLayer("Dead");
         _isDead = true;
         _dead.Invoke();
+        this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 4;
         this.enabled = false;
+        Invoke(nameof(SetDeactive),3);
+        
+    }
+
+    public void SetDeactive()
+    {
+        this.gameObject.SetActive(false);
     }
     public void Tick(float startTime)
     { 

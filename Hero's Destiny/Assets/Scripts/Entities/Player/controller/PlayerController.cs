@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,7 +55,13 @@ public abstract class PlayerController : MonoBehaviour,IController
         _UIView.maxHealth = _playerModel.CurrentHealth.Value;
         _playerModel.CurrentHealth.OnValueChanged.AddListener(CheckHealth);
     }
-    
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(other.name);
+        if(other.CompareTag("Finish")) TempGameManager.RestartGame();
+    }
 
     private void FixedUpdate()
     {
