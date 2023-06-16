@@ -113,6 +113,7 @@ public abstract class PlayerController : MonoBehaviour,IController
 
     IEnumerator Crouch(InputAction.CallbackContext context)
     {
+        float firstVelocityY = _playerVelocity.x;
         isCrouch = true;
         float sizey = playerCollider.size.y;
         
@@ -120,17 +121,18 @@ public abstract class PlayerController : MonoBehaviour,IController
         
         this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + 1);
         playerCollider.offset = new Vector2(playerCollider.offset.x, -1.7f);
-        _playerVelocity.x *= .5f;
+        //_playerVelocity.x *= .5f;
         playerCollider.size = new Vector2(playerCollider.size.x,sizey/2);
         
         while (context.phase != InputActionPhase.Waiting)
         {
-            yield return null;
+            _playerVelocity.x *= .9f;
+            yield return new WaitForSeconds(.2f);
         }
         
         _playerEvents.OnCrouch(false);
         isCrouch = false;
-        _playerVelocity.x *= 2f;
+        _playerVelocity.x = firstVelocityY;
         playerCollider.size = new Vector2(playerCollider.size.x,sizey);
         playerCollider.offset = new Vector2(playerCollider.offset.x, -0.55f);
     }
