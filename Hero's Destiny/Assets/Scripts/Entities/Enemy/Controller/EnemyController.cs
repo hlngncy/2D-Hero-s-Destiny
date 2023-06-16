@@ -108,6 +108,7 @@ public abstract class EnemyController : MonoBehaviour,IController
     public void Die()
     {
         _path.enabled = false;
+        _aiDestinationSetter.enabled = false;
         this.gameObject.layer = LayerMask.NameToLayer("Dead");
         _isDead = true;
         _dead.Invoke();
