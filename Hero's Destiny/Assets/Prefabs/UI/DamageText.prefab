@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1939730673843241271}
   - component: {fileID: 4244448452468751512}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 8277301451023985903}
   - component: {fileID: 6725533884497349951}
   - component: {fileID: 4252800221195649951}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -24,6 +24,7 @@ public class DamageTextPool : Singleton<DamageTextPool>
 
     private void GetDamageTextFromPool(DamageText obj)
     {
+        Transform _t = obj.transform;
         obj.ChangeText(_damage);
         obj.transform.SetParent(_owner);
         obj.transform.position = Vector3.zero;
