@@ -433,11 +433,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -20.267326, y: 1.1451383}
-  - {x: -19.714611, y: 1.0524931}
+  - {x: -18.832352, y: 1.1144979}
+  - {x: -16.018986, y: 1.1325722}
   - {x: -9.522144, y: 1.1089854}
-  - {x: -0.20557404, y: 1.0041628}
-  - {x: 0.6809616, y: 0.99288464}
+  - {x: -2.6153488, y: 0.9906912}
+  - {x: -1.0018845, y: 0.95293784}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -4034,7 +4034,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -13.596109, y: -1.7115984}
+  m_Offset: {x: -13.479134, y: -1.7343817}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4045,7 +4045,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11.066853, y: 4.6842365}
+  m_Size: {x: 12.42952, y: 5.195242}
   m_EdgeRadius: 0
 --- !u!68 &276334668
 EdgeCollider2D:
@@ -4063,11 +4063,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -20.28901, y: 1.0659819}
-  - {x: -20.184326, y: 1.021822}
-  - {x: -19.389004, y: 1.0329256}
-  - {x: -7.484436, y: 1.119317}
-  - {x: -6.9737396, y: 1.0831375}
+  - {x: -19.031216, y: 1.0326624}
+  - {x: -8.126099, y: 1.019208}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -12602,11 +12599,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -20.28901, y: 1.0659819}
-  - {x: -20.184326, y: 1.021822}
-  - {x: -19.389004, y: 1.0329256}
-  - {x: -7.484436, y: 1.119317}
-  - {x: -6.9737396, y: 1.0831375}
+  - {x: -18.98912, y: 1.0749588}
+  - {x: -18.253616, y: 1.0351572}
+  - {x: -17.27452, y: 1.0475273}
+  - {x: -9.180061, y: 1.134058}
+  - {x: -8.1371, y: 1.1291008}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -14019,7 +14016,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -13.596109, y: -1.7115984}
+  m_Offset: {x: -13.514639, y: -1.5599084}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -14030,7 +14027,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11.066853, y: 4.6842365}
+  m_Size: {x: 12.435162, y: 4.9876165}
   m_EdgeRadius: 0
 --- !u!1 &653861048
 GameObject:
@@ -15451,7 +15448,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -13.657097, y: -1.7695119}
+  m_Offset: {x: -13.5406685, y: -1.6828022}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -15462,7 +15459,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11.725388, y: 5.2231145}
+  m_Size: {x: 12.4555435, y: 5.396534}
   m_EdgeRadius: 0
 --- !u!68 &1513599906
 EdgeCollider2D:
@@ -15480,11 +15477,9 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -19.563118, y: 1.3428857}
-  - {x: -19.311188, y: 1.3560082}
-  - {x: -13.48597, y: 1.3427483}
-  - {x: -7.357445, y: 1.2766684}
-  - {x: -6.9979095, y: 1.1843815}
+  - {x: -19.373741, y: 1.114984}
+  - {x: -13.425362, y: 1.1685768}
+  - {x: -8.063423, y: 1.1075324}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -16873,6 +16868,7 @@ GameObject:
   - component: {fileID: 1624252546}
   - component: {fileID: 1624252545}
   - component: {fileID: 1624252544}
+  - component: {fileID: 1624252547}
   m_Layer: 6
   m_Name: Magic Cliffs 2
   m_TagString: Untagged
@@ -16915,9 +16911,7 @@ EdgeCollider2D:
   - {x: 19.60201, y: -1.9374114}
   - {x: 32.86799, y: -8.594668}
   - {x: 46.038177, y: -8.750294}
-  - {x: 50.42496, y: -8.80213}
-  - {x: 50.217735, y: -14.435351}
-  - {x: 48.09796, y: -16.33408}
+  - {x: 49.318073, y: -8.745556}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -23403,6 +23397,32 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!61 &1624252547
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624252542}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 47.295677, y: -12.214193}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.1400146, y: 6.270915}
+  m_EdgeRadius: 0
 --- !u!1 &1640365413
 GameObject:
   m_ObjectHideFlags: 0
@@ -23760,11 +23780,12 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -19.563118, y: 1.3428857}
-  - {x: -19.311188, y: 1.3560082}
+  - {x: -18.947365, y: 1.315408}
+  - {x: -18.055252, y: 1.3008162}
   - {x: -13.48597, y: 1.3427483}
-  - {x: -7.357445, y: 1.2766684}
-  - {x: -6.9979095, y: 1.1843815}
+  - {x: -10.782799, y: 1.211093}
+  - {x: -8.75959, y: 1.2097353}
+  - {x: -8.025391, y: 1.1952806}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -25085,7 +25106,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -13.657097, y: -1.7695119}
+  m_Offset: {x: -13.391804, y: -1.6786432}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -25096,7 +25117,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11.725388, y: 5.2231145}
+  m_Size: {x: 11.684502, y: 5.404852}
   m_EdgeRadius: 0
 --- !u!1 &1787963226
 GameObject:
@@ -26127,7 +26148,7 @@ GameObject:
   - component: {fileID: 2072415090}
   - component: {fileID: 2072415089}
   m_Layer: 6
-  m_Name: Tilemap Grid
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
