@@ -25,6 +25,7 @@ public abstract class PlayerController : MonoBehaviour,IController
     private bool isNormalAttack;
     private bool isCrouch = false;
     private bool _isDead;
+    private float _colliderSizeY;
     
     //events
     [SerializeField] private PlayerEvents _playerEvents;
@@ -46,6 +47,7 @@ public abstract class PlayerController : MonoBehaviour,IController
         _playerEvents.AddListeners(_playerModelObj);
         _playerEvents.AddListeners();
         _playerModel = _playerModelObj;
+        _colliderSizeY = playerCollider.size.y;
     }
 
     private void Start()
@@ -122,14 +124,13 @@ public abstract class PlayerController : MonoBehaviour,IController
     {
         float firstVelocityY = _playerVelocity.x;
         isCrouch = true;
-        float sizey = playerCollider.size.y;
-        
+
         _playerEvents.OnCrouch(true);
         
-        this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + 1);
+        this.transform.position = new Vector2(this.transform.position.x, transform.position.y + 1);
         playerCollider.offset = new Vector2(playerCollider.offset.x, -1.7f);
         //_playerVelocity.x *= .5f;
-        playerCollider.size = new Vector2(playerCollider.size.x,sizey/2);
+        playerCollider.size = new Vector2(playerCollider.size.x,_colliderSizeY/2);
         _playerVelocity.x *= 1.5f;
         while (context.phase != InputActionPhase.Waiting)
         {
@@ -139,8 +140,8 @@ public abstract class PlayerController : MonoBehaviour,IController
         }
         _playerEvents.OnCrouch(false);
         isCrouch = false;
-        _playerVelocity.x = firstVelocityY;
-        playerCollider.size = new Vector2(playerCollider.size.x,sizey);
+        _playerVelocity.x = _playerModel.MovementSpeed;
+        playerCollider.size = new Vector2(playerCollider.size.x,_colliderSizeY);
         playerCollider.offset = new Vector2(playerCollider.offset.x, -0.55f);
     }
 
