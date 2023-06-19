@@ -61,7 +61,6 @@ public abstract class PlayerController : MonoBehaviour,IController
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.name);
         if(other.CompareTag("Finish")) TempGameManager.RestartGame();
     }
 

@@ -31,6 +31,7 @@ public abstract class EnemyController : MonoBehaviour,IController
     private float _attackCooldown;
     private float _attackStartTime;
     private int _maxHealth;
+    private Observable<bool> _isTherePlayer = new Observable<bool>();
 
     //A* Pathfinder
     [SerializeField] private Collider2D _attackArea;
@@ -55,6 +56,7 @@ public abstract class EnemyController : MonoBehaviour,IController
         _dead.AddListener(_enemyAnimationView.OnDead);
         _run.AddListener(_enemyAnimationView.OnRun);
         _aiDestinationSetter.target = GameObject.FindWithTag("Player").transform;
+        _isTherePlayer.OnValueChanged.AddListener(ChangeState);
     }
 
     private void FixedUpdate()
@@ -71,18 +73,24 @@ public abstract class EnemyController : MonoBehaviour,IController
     private void CheckPlayer()
     {
         bool isTherePlayer = _attackArea.IsTouchingLayers(layer);
-        _aiDestinationSetter.enabled = isTherePlayer;
-        _patrol.enabled = !isTherePlayer;
-        if(isTherePlayer) _enemyDetect.Invoke();
+        if(_isTherePlayer.Value == isTherePlayer) return;
+        else _isTherePlayer.Value = isTherePlayer;
+        
+    }
+
+    private void ChangeState(bool previous, bool current)
+    {
+        Debug.Log("changestate");
+        _aiDestinationSetter.enabled = current;
+        _patrol.enabled = !current;
+        if(current) _enemyDetect.Invoke();
         else _idle.Invoke();
-        if ( _path.reachedEndOfPath && isTherePlayer && _canAttack)
+        if ( _path.reachedEndOfPath && current && _canAttack)
         {
             Debug.Log("attack enemy");
             DoDamage();
         }
-        
     }
-
     private void FlipSprite()
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(_path.desiredVelocity.x) > Mathf.Epsilon;
