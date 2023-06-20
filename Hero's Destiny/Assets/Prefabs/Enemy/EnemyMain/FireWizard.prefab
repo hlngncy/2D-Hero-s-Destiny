@@ -214,6 +214,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4682207410716758816, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4896451956412158266, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -284,6 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 775709820445268200, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+    - {fileID: 7052299332340233067, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
 --- !u!1 &359578647681698304 stripped
 GameObject:
@@ -303,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyAnimationView: {fileID: 5833622613302060606}
-  _enemyUIView: {fileID: 2061172828637885676}
+  _enemyUIView: {fileID: 0}
   _enemyStats: {fileID: 11400000, guid: 6f050df539e262a4e90034791331776d, type: 2}
   layer:
     serializedVersion: 2
@@ -314,17 +319,6 @@ MonoBehaviour:
   _patrol: {fileID: 7429962053759063997}
   _attackPoint: {fileID: 3082041075725686223}
   _fireballPool: {fileID: 535441310232643660}
---- !u!114 &2061172828637885676 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7052299332340233067, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
-  m_PrefabInstance: {fileID: 9026354003951798151}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 359578647681698304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3967d2ae93a27854fb20d7035bf861fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3850268933431117524 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5200226102455992659, guid: a152d25764759b647a4a2ddcb041b698, type: 3}

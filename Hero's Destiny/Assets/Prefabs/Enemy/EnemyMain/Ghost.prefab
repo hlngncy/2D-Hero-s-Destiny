@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 4.6
       objectReference: {fileID: 0}
+    - target: {fileID: 775709820445268200, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+      propertyPath: _enemyUIView
+      value: 
+      objectReference: {fileID: 9020299213006555209}
     - target: {fileID: 3669442424313325890, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
       propertyPath: m_Size.x
       value: 2.7
@@ -81,3 +85,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+--- !u!1 &9020299213006555209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8771173671040109959, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+  m_PrefabInstance: {fileID: 331012016492185038}
+  m_PrefabAsset: {fileID: 0}

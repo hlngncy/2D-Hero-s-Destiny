@@ -21,18 +21,22 @@ public class PlayerUIView : MonoBehaviour, IView, IEventListener
 
     public void OnRun()
     {
+        //TODO Add vignette effect
     }
 
     public void OnIdle()
     {
+        //TODO Add vignette effect
     }
 
     public void OnJump()
     {
+        //TODO Add vignette effect
     }
 
     public void OnCrouch(bool isCrouch)
     {
+        //TODO Add vignette effect
     }
 
     public void OnHurt(int damage, int currentHealth)
@@ -48,9 +52,11 @@ public class PlayerUIView : MonoBehaviour, IView, IEventListener
 
     public void OnAttack()
     {
+        //TODO Add vignette effect
     }
 
     public void OnHeavyAttack()
     {
+        //TODO Add vignette effect
     }
 }

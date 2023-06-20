@@ -9,7 +9,8 @@ public abstract class EnemyController : MonoBehaviour,IController
 
     //views
     [SerializeField] protected EnemyAnimationView _enemyAnimationView;
-    [SerializeField] private EnemyUIView _enemyUIView;
+    [SerializeField] private GameObject _enemyUIView;
+    private IEnemyUIView _IEnemyUIView;
     
     //model
     [SerializeField] protected EnemySO _enemyStats;
@@ -38,7 +39,7 @@ public abstract class EnemyController : MonoBehaviour,IController
     //A* Pathfinder
     [SerializeField] private Collider2D _attackArea;
     [SerializeField] private AIPath _path;
-    [SerializeField] private AIDestinationSetter _aiDestinationSetter;
+    [SerializeField] protected AIDestinationSetter _aiDestinationSetter;
     [SerializeField] private Patrol _patrol;
 
     protected virtual void Awake()
@@ -47,11 +48,12 @@ public abstract class EnemyController : MonoBehaviour,IController
         _path.endReachedDistance = _enemyStats.attackRange;
         _maxHealth = _enemyStats.maxHealth;
         _attackCooldown = _enemyStats.attackCooldown;
+        _IEnemyUIView = _enemyUIView.GetComponent<IEnemyUIView>();
         
-        _hurt.AddListener(_enemyUIView.OnHurt); 
-        _dead.AddListener(_enemyUIView.OnDead);
-        _enemyDetect.AddListener(_enemyUIView.OnEnemyDetect);
-        _idle.AddListener(_enemyUIView.OnIdle);
+        _hurt.AddListener(_IEnemyUIView.OnHurt); 
+        _dead.AddListener(_IEnemyUIView.OnDead);
+        _enemyDetect.AddListener(_IEnemyUIView.OnEnemyDetect);
+        _idle.AddListener(_IEnemyUIView.OnIdle);
         
         _hurt.AddListener(_enemyAnimationView.OnHurt);
         _attack.AddListener(_enemyAnimationView.OnAttack);

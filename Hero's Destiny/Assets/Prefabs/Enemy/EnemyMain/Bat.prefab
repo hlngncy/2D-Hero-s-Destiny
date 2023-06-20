@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyAnimationView: {fileID: 1910780977730308464}
-  _enemyUIView: {fileID: 6263245062727768994}
+  _enemyUIView: {fileID: 5659968276845585742}
   _enemyStats: {fileID: 11400000, guid: 4f5821e52c1d9394db2ad8bd9e95b887, type: 2}
   layer:
     serializedVersion: 2
@@ -182,17 +182,6 @@ MonoBehaviour:
   _path: {fileID: 9160219134294501786}
   _aiDestinationSetter: {fileID: 1969085705052951065}
   _patrol: {fileID: 3273486806968875251}
---- !u!114 &6263245062727768994 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7052299332340233067, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
-  m_PrefabInstance: {fileID: 3978165919490156745}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5659968276845585742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3967d2ae93a27854fb20d7035bf861fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &9160219134294501786 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5200226102455992659, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
