@@ -13,7 +13,7 @@ public interface IEnemyUIView
 public interface IEnemyAnimView
 {
     public void OnHurt(int damage, int currentHealth, int maxHealth);
-    public void OnAttack();
+    public void OnAttack(string attack);
     public void OnDead();
     public void OnRun(bool isMoving);
 }

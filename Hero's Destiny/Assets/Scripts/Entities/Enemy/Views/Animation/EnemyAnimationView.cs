@@ -12,9 +12,9 @@ public class EnemyAnimationView : MonoBehaviour,IEnemyAnimView
     }
 
 
-    public void OnAttack()
+    public void OnAttack(string attack)
     {
-        _animator.SetTrigger("attack");
+        _animator.SetTrigger(attack);
     }
 
     public void OnDead()

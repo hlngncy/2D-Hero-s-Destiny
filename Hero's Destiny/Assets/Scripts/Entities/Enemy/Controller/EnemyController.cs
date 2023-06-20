@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Pathfinding;
+using Pathfinding.Ionic.Zip;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,14 +9,14 @@ public abstract class EnemyController : MonoBehaviour,IController
 {
 
     //views
-    [SerializeField] private EnemyAnimationView _enemyAnimationView;
+    [SerializeField] protected EnemyAnimationView _enemyAnimationView;
     [SerializeField] private EnemyUIView _enemyUIView;
     
     //model
     [SerializeField] protected EnemySO _enemyStats;
 
     //events
-    private UnityEvent _attack = new UnityEvent();
+    private UnityEvent<string> _attack = new UnityEvent<string>();
     private UnityEvent<int, int, int> _hurt = new UnityEvent<int, int, int>();
     private UnityEvent _dead = new UnityEvent();
     private UnityEvent<bool> _run = new UnityEvent<bool>();
@@ -31,7 +32,9 @@ public abstract class EnemyController : MonoBehaviour,IController
     private float _attackCooldown;
     private float _attackStartTime;
     private int _maxHealth;
-    private Observable<bool> _isTherePlayer = new Observable<bool>();
+    protected Observable<bool> _isTherePlayer = new Observable<bool>();
+    protected string _attackType;
+    private bool _isReached;
 
     //A* Pathfinder
     [SerializeField] private Collider2D _attackArea;
@@ -39,7 +42,7 @@ public abstract class EnemyController : MonoBehaviour,IController
     [SerializeField] private AIDestinationSetter _aiDestinationSetter;
     [SerializeField] private Patrol _patrol;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _path.maxSpeed = _enemyStats.movementSpeed;
         _path.endReachedDistance = _enemyStats.attackRange;
@@ -57,6 +60,7 @@ public abstract class EnemyController : MonoBehaviour,IController
         _run.AddListener(_enemyAnimationView.OnRun);
         _aiDestinationSetter.target = GameObject.FindWithTag("Player").transform;
         _isTherePlayer.OnValueChanged.AddListener(ChangeState);
+        _attackType = "attack";
     }
 
     private void FixedUpdate()
@@ -64,10 +68,11 @@ public abstract class EnemyController : MonoBehaviour,IController
         FlipSprite();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         CheckPlayer();
         Tick(_attackStartTime);
+        if(_aiDestinationSetter.enabled) CheckCanDamage();
     }
 
     private void CheckPlayer()
@@ -75,22 +80,27 @@ public abstract class EnemyController : MonoBehaviour,IController
         bool isTherePlayer = _attackArea.IsTouchingLayers(layer);
         if(_isTherePlayer.Value == isTherePlayer) return;
         else _isTherePlayer.Value = isTherePlayer;
-        
     }
 
-    private void ChangeState(bool previous, bool current)
+    protected virtual void ChangeState(bool previous, bool current)
     {
         Debug.Log("changestate");
         _aiDestinationSetter.enabled = current;
         _patrol.enabled = !current;
         if(current) _enemyDetect.Invoke();
         else _idle.Invoke();
-        if ( _path.reachedEndOfPath && current && _canAttack)
+    }
+
+    protected virtual void CheckCanDamage()
+    {
+        _isReached = _path.reachedEndOfPath;
+        if (_isReached && _isTherePlayer.Value && _canAttack)
         {
-            Debug.Log("attack enemy");
+            Debug.Log("attack");
             DoDamage();
         }
     }
+    
     private void FlipSprite()
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(_path.desiredVelocity.x) > Mathf.Epsilon;
@@ -112,9 +122,8 @@ public abstract class EnemyController : MonoBehaviour,IController
     protected virtual void DoDamage()
     {
         _attackStartTime = Time.time;
-        _attack.Invoke();
+        _attack.Invoke(_attackType);
     }
-
     public void Die()
     {
         _path.enabled = false;
@@ -133,7 +142,7 @@ public abstract class EnemyController : MonoBehaviour,IController
     {
         this.gameObject.SetActive(false);
     }
-    public void Tick(float startTime)
+    private void Tick(float startTime)
     { 
         if (startTime == 0)
         {

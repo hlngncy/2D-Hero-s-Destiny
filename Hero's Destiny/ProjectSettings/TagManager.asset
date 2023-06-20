@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Spell
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Entity
   - AttackCollider
   - Dead
-  - 
+  - Spell
   - 
   - 
   - 

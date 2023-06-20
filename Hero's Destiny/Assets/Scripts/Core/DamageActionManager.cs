@@ -13,4 +13,9 @@ public class DamageActionManager : Singleton<DamageActionManager>
             entities[i].GetComponent<IController>().Hurt(damage);
         }
     }
+    
+    public void DoDamage(Collider2D entity, int damage)
+    {
+        entity.GetComponent<IController>().Hurt(damage);
+    }
 }
