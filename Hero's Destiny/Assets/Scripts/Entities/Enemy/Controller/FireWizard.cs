@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 public class FireWizard : EnemyController
 {
@@ -41,14 +39,12 @@ public class FireWizard : EnemyController
     {
         if (_canHeavyAttack)
         {
-            Debug.Log("HeavyAttack");
             _attackType = "heavyattack";
             SpawnFireballs();
             _heavyAttackStartTime = Time.time;
         }
         else
         {
-            Debug.Log("Attack");
             _attackType = "attack";
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(_attackPoint.position, _enemyStats.attackRange, layer);
             if(hitEnemies.Length == 0) return;

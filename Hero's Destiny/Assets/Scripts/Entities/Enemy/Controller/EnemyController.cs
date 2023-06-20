@@ -1,7 +1,6 @@
-using System;
+
 using System.Collections;
 using Pathfinding;
-using Pathfinding.Ionic.Zip;
 using UnityEngine;
 using UnityEngine.Events;
 
