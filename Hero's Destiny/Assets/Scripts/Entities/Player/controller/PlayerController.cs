@@ -130,7 +130,7 @@ public abstract class PlayerController : MonoBehaviour,IController
         playerCollider.offset = new Vector2(playerCollider.offset.x, -1.7f);
         //_playerVelocity.x *= .5f;
         playerCollider.size = new Vector2(playerCollider.size.x,_colliderSizeY/2);
-        _playerVelocity.x *= 1.5f;
+        _playerVelocity.x *= 2f;
         while (context.phase != InputActionPhase.Waiting)
         {
             _playerVelocity.x *= .8f;
