@@ -47,7 +47,7 @@ public class AnimationView : MonoBehaviour,IView, IEventListener
 
     public void OnHurt(int damage, int currentHealth)
     {
-        if (currentHealth - damage <= 0) return;
+        if (currentHealth - damage <= 0 || damage < 0) return;
         _animator.SetTrigger("Hurt");
     }
 

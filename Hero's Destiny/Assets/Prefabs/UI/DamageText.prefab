@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 4252800221195649951}
+  _healColor: {r: 0.16104485, g: 0.7264151, b: 0.16824707, a: 1}
+  _damageColor: {r: 0.7264151, g: 0, b: 0, a: 1}
 --- !u!1 &7207663349688050862
 GameObject:
   m_ObjectHideFlags: 0

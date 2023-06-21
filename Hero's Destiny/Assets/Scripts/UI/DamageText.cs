@@ -7,6 +7,8 @@ using UnityEngine;
 public class DamageText : MonoBehaviour
 {
     [SerializeField] private TextMeshPro text;
+    [SerializeField] private Color _healColor;
+    [SerializeField] private Color _damageColor;
     private Vector3 _startScale;
 
     private void Update()
@@ -27,6 +29,15 @@ public class DamageText : MonoBehaviour
 
     public void ChangeText(int damage)
     {
-        text.text = $"-{damage}";
+        if (damage < 0)
+        {
+            text.text = $"+{Mathf.Abs(damage)}";
+            text.color = _healColor;
+        }
+        else
+        {
+            text.text = $"-{damage}";
+            text.color = _damageColor;
+        }
     }
 }

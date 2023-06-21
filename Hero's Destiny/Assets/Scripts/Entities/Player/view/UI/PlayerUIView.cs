@@ -41,7 +41,9 @@ public class PlayerUIView : MonoBehaviour, IView, IEventListener
 
     public void OnHurt(int damage, int currentHealth)
     {
-        _healthBarSlider.value = (currentHealth - damage) ;
+        int health = currentHealth - damage;
+        if (health > _healthBarSlider.maxValue) health = (int)_healthBarSlider.maxValue;
+        _healthBarSlider.value = health ;
         DamageTextPool.Instance.GetDamageText(_player.transform, damage);
     }
 
