@@ -7,6 +7,8 @@ public class PlayerUIView : MonoBehaviour, IView, IEventListener
 {
     [SerializeField] private Slider _healthBarSlider;
     [SerializeField] private GameObject _player;
+    [SerializeField] private Image _sliderFill;
+    [SerializeField] private Gradient _healthGradient;
     public int maxHealth;
     private void Start()
     {
@@ -42,8 +44,11 @@ public class PlayerUIView : MonoBehaviour, IView, IEventListener
     public void OnHurt(int damage, int currentHealth)
     {
         int health = currentHealth - damage;
-        if (health > _healthBarSlider.maxValue) health = (int)_healthBarSlider.maxValue;
+        if (health > maxHealth) health = maxHealth;
         _healthBarSlider.value = health ;
+        Debug.Log(health);
+        Debug.Log(_healthBarSlider.value);
+        _sliderFill.color = _healthGradient.Evaluate((float)health / maxHealth);
         DamageTextPool.Instance.GetDamageText(_player.transform, damage);
     }
 
