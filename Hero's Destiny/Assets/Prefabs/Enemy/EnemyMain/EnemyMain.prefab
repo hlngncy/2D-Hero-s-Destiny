@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8515758543674919545
 RectTransform:
   m_ObjectHideFlags: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyAnimationView: {fileID: 3292480969989611961}
-  _enemyUIView: {fileID: 7052299332340233067}
+  _enemyUIView: {fileID: 0}
   _enemyStats: {fileID: 11400000, guid: 07470484c051e6843b920e6b7df828e8, type: 2}
   layer:
     serializedVersion: 2
