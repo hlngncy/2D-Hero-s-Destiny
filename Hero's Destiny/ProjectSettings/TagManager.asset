@@ -20,8 +20,8 @@ TagManager:
   - AttackCollider
   - Dead
   - Spell
-  - 
-  - 
+  - Trap
+  - DamageText
   - 
   - 
   - 
@@ -61,6 +61,12 @@ TagManager:
   - name: Player
     uniqueID: 935112281
     locked: 0
+  - name: Trap
+    uniqueID: 710650947
+    locked: 0
   - name: UI
     uniqueID: 3137461535
+    locked: 0
+  - name: DamageText
+    uniqueID: 3021755863
     locked: 0
