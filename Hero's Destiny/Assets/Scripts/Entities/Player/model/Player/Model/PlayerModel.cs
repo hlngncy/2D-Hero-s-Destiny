@@ -27,11 +27,10 @@ public class PlayerModel : MonoBehaviour, IModel, IModelEventListener
     }
     
 
-    public void OnHurt(int damage, int currentHealth)
+    public void OnHurt(HealthInfo healthInfo)
     {
-        _healthDiff = damage;
-        if (currentHealth - _healthDiff > _playerData.maxHealth) currentHealthOB.Value = _playerData.maxHealth ;
-        else currentHealthOB.Value = currentHealth - _healthDiff;
+        if (healthInfo.currentHealth - healthInfo.damage > _playerData.maxHealth) currentHealthOB.Value = _playerData.maxHealth ;
+        else currentHealthOB.Value = healthInfo.currentHealth - _healthDiff;
     }
     
     public void OnDie()

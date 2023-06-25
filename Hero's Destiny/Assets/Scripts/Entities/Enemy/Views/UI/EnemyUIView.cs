@@ -11,10 +11,10 @@ public class EnemyUIView : MonoBehaviour, IEnemyUIView
     [SerializeField] private Gradient _healthGradient;
 
     private float _newHealth;
-    public void OnHurt(int damage, int currentHealth, int maxHealth)
+    public void OnHurt(HealthInfo healthInfo)
     {
-        _newHealth = (float)currentHealth / maxHealth;
-        DamageTextPool.Instance.GetDamageText(_enemy.transform, damage);
+        _newHealth = (float)healthInfo.currentHealth / healthInfo.maxHealth;
+        DamageTextPool.Instance.GetDamageText(_enemy.transform, healthInfo.damage);
         _healthSign.color = _healthGradient.Evaluate(_newHealth);
     }
 

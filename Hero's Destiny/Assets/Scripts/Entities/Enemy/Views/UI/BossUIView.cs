@@ -17,11 +17,11 @@ public class BossUIView : MonoBehaviour, IEnemyUIView
         _iconPlace.sprite = _icon;
     }
 
-    public void OnHurt(int damage, int currentHealth, int maxHealth)
+    public void OnHurt(HealthInfo healthInfo)
     {
-        _healthBarSlider.maxValue = maxHealth;
-        _healthBarSlider.value = (currentHealth - damage) ;
-        DamageTextPool.Instance.GetDamageText(_owner.transform, damage);
+        _healthBarSlider.maxValue = healthInfo.maxHealth;
+        _healthBarSlider.value = (healthInfo.currentHealth - healthInfo.damage) ;
+        DamageTextPool.Instance.GetDamageText(_owner.transform, healthInfo.damage);
     }
 
     public void OnDead()

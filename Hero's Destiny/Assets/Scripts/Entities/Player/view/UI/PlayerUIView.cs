@@ -10,6 +10,7 @@ public class PlayerUIView : MonoBehaviour, IView, IEventListener
     [SerializeField] private Image _sliderFill;
     [SerializeField] private Gradient _healthGradient;
     public int maxHealth;
+    private int _health;
     private void Start()
     {
         StartCoroutine(SliderMaxHealth());
@@ -41,15 +42,13 @@ public class PlayerUIView : MonoBehaviour, IView, IEventListener
         //TODO Add vignette effect
     }
 
-    public void OnHurt(int damage, int currentHealth)
+    public void OnHurt(HealthInfo healthInfo)
     {
-        int health = currentHealth - damage;
-        if (health > maxHealth) health = maxHealth;
-        _healthBarSlider.value = health ;
-        Debug.Log(health);
-        Debug.Log(_healthBarSlider.value);
-        _sliderFill.color = _healthGradient.Evaluate((float)health / maxHealth);
-        DamageTextPool.Instance.GetDamageText(_player.transform, damage);
+        _health = healthInfo.currentHealth - healthInfo.damage;
+        if (_health > maxHealth) _health = maxHealth;
+        _healthBarSlider.value = _health ;
+        _sliderFill.color = _healthGradient.Evaluate((float)_health / maxHealth);
+        DamageTextPool.Instance.GetDamageText(_player.transform, healthInfo.damage);
     }
 
     public void OnDie()

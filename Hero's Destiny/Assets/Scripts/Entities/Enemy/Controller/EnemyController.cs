@@ -17,7 +17,7 @@ public abstract class EnemyController : MonoBehaviour,IController
 
     //events
     private UnityEvent<string> _attack = new UnityEvent<string>();
-    private UnityEvent<int, int, int> _hurt = new UnityEvent<int, int, int>();
+    private UnityEvent<HealthInfo> _hurt = new UnityEvent<HealthInfo>();
     private UnityEvent _dead = new UnityEvent();
     private UnityEvent<bool> _run = new UnityEvent<bool>();
     private UnityEvent _idle = new UnityEvent();
@@ -31,7 +31,7 @@ public abstract class EnemyController : MonoBehaviour,IController
     private bool _canAttack = true;
     private float _attackCooldown;
     private float _attackStartTime;
-    private int _maxHealth;
+    private int _currentHealth;
     protected Observable<bool> _isTherePlayer = new Observable<bool>();
     protected string _attackType;
     private bool _isReached;
@@ -41,15 +41,14 @@ public abstract class EnemyController : MonoBehaviour,IController
     [SerializeField] private AIPath _path;
     [SerializeField] protected AIDestinationSetter _aiDestinationSetter;
     [SerializeField] private Patrol _patrol;
-
+    private HealthInfo _healthInfo = new HealthInfo();
     protected virtual void Awake()
     {
         _path.maxSpeed = _enemyStats.movementSpeed;
         _path.endReachedDistance = _enemyStats.attackRange;
-        _maxHealth = _enemyStats.maxHealth;
+        _currentHealth = _enemyStats.maxHealth;
         _attackCooldown = _enemyStats.attackCooldown;
         _IEnemyUIView = _enemyUIView.GetComponent<IEnemyUIView>();
-        
         _hurt.AddListener(_IEnemyUIView.OnHurt); 
         _dead.AddListener(_IEnemyUIView.OnDead);
         _enemyDetect.AddListener(_IEnemyUIView.OnEnemyDetect);
@@ -62,6 +61,9 @@ public abstract class EnemyController : MonoBehaviour,IController
         _aiDestinationSetter.target = GameObject.FindWithTag("Player").transform;
         _isTherePlayer.OnValueChanged.AddListener(ChangeState);
         _attackType = "attack";
+
+        _healthInfo.maxHealth = _enemyStats.maxHealth;
+        _healthInfo.currentHealth = _currentHealth;
     }
 
     private void FixedUpdate()
@@ -114,9 +116,10 @@ public abstract class EnemyController : MonoBehaviour,IController
 
     public void Hurt(int damage)
     {
-        _maxHealth -= damage;
-        if(_maxHealth <= 0) Die();
-        _hurt.Invoke(damage , _maxHealth, _enemyStats.maxHealth);
+        _currentHealth -= damage;
+        _healthInfo.damage = damage;
+        if(_currentHealth <= 0) Die();
+        _hurt.Invoke(_healthInfo);
     }
 
     

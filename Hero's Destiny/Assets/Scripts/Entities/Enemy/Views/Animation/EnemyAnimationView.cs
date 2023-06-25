@@ -6,7 +6,7 @@ public class EnemyAnimationView : MonoBehaviour,IEnemyAnimView
     [SerializeField] private Animator _animator;
 
 
-    public void OnHurt(int damage, int currentHealth, int maxHealth)
+    public void OnHurt(HealthInfo healthInfo)
     {
         _animator.SetTrigger("hurt");
     }

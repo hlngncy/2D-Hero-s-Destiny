@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class PlayerEvents : MonoBehaviour
 {
+    private HealthInfo _healthInfo;
     private UnityEvent _run = new UnityEvent();
     private UnityEvent _idle = new UnityEvent();
     private UnityEvent _jump = new UnityEvent();
@@ -11,7 +12,7 @@ public class PlayerEvents : MonoBehaviour
     private UnityEvent _attack = new UnityEvent();
     private UnityEvent _heavyAttack = new UnityEvent();
     private UnityEvent _die = new UnityEvent();
-    private UnityEvent<int, int> _hurt = new UnityEvent<int, int>();
+    private UnityEvent<HealthInfo> _hurt = new UnityEvent<HealthInfo>();
     //current health, difference(+,-)
 
     public List<IEventListener> EventListeners
@@ -21,6 +22,7 @@ public class PlayerEvents : MonoBehaviour
     private List<IEventListener> _eventListeners = new List<IEventListener>();
     private void Awake()
     {
+        _healthInfo = new HealthInfo();
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -114,9 +116,11 @@ public class PlayerEvents : MonoBehaviour
     
     public void OnHurt(int damage, int currentHealth)
     {
-        _hurt.Invoke(damage, currentHealth);
+        _healthInfo.damage = damage;
+        _healthInfo.currentHealth = currentHealth;
+        _hurt.Invoke(_healthInfo);
     }
-    
+
 }
 
 

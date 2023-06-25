@@ -3153,6 +3153,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5659968276845585742, guid: 753c9af2138a2644982bb3da957e9102, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8414687622205553139, guid: 753c9af2138a2644982bb3da957e9102, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -3200,6 +3204,10 @@ PrefabInstance:
     - target: {fileID: 8414687622205553139, guid: 753c9af2138a2644982bb3da957e9102, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633332344683494377, guid: 753c9af2138a2644982bb3da957e9102, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1562508868745416862, guid: 753c9af2138a2644982bb3da957e9102, type: 3}
