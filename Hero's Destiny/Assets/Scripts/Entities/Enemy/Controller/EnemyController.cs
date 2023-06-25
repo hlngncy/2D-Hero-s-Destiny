@@ -118,6 +118,7 @@ public abstract class EnemyController : MonoBehaviour,IController
     {
         _currentHealth -= damage;
         _healthInfo.damage = damage;
+        _healthInfo.currentHealth = _currentHealth;
         if(_currentHealth <= 0) Die();
         _hurt.Invoke(_healthInfo);
     }
