@@ -166,6 +166,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 279906077964620409, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+      propertyPath: _die
+      value: 
+      objectReference: {fileID: 8300000, guid: 1a6c95f5f287c78418903976fbf64bac, type: 3}
+    - target: {fileID: 279906077964620409, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+      propertyPath: _hurt
+      value: 
+      objectReference: {fileID: 8300000, guid: 02d8819152f1f7e41991a6007f697de5, type: 3}
+    - target: {fileID: 279906077964620409, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+      propertyPath: _attack
+      value: 
+      objectReference: {fileID: 8300000, guid: 83313cf11eccef744964f8abfdcc8c41, type: 3}
+    - target: {fileID: 279906077964620409, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+      propertyPath: _heavyAttack
+      value: 
+      objectReference: {fileID: 8300000, guid: 74fd1c52e14af9748802e42c616a2fe1, type: 3}
     - target: {fileID: 440355087872321190, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
       propertyPath: m_Size.x
       value: 1.9445813
@@ -278,6 +294,14 @@ PrefabInstance:
       propertyPath: autoRepath.visualizeSensitivity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7213273879751263037, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+      propertyPath: _audio
+      value: 
+      objectReference: {fileID: 9126087509451019774}
+    - target: {fileID: 7213273879751263037, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+      propertyPath: _source
+      value: 
+      objectReference: {fileID: 5531341172644851679}
     - target: {fileID: 7901479140868390478, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
       propertyPath: m_Controller
       value: 
@@ -335,6 +359,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4896451956412158266, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
   m_PrefabInstance: {fileID: 9026354003951798151}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &5531341172644851679 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3568900780704786520, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+  m_PrefabInstance: {fileID: 9026354003951798151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5833622613302060606 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3292480969989611961, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
@@ -373,3 +402,14 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 440355087872321190, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
   m_PrefabInstance: {fileID: 9026354003951798151}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9126087509451019774 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 279906077964620409, guid: a152d25764759b647a4a2ddcb041b698, type: 3}
+  m_PrefabInstance: {fileID: 9026354003951798151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359578647681698304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8112db74a85a617478e24067fa890913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

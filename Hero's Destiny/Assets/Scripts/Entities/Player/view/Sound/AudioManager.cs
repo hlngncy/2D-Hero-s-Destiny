@@ -11,25 +11,25 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip _hurt;
     [SerializeField] private AudioClip _heal;
 
-    public AudioClip GetClip(PlayerEventEnum playerEvent)
+    public AudioClip GetClip(EntityEventEnum entityEvent)
     {
-        switch (playerEvent)
+        switch (entityEvent)
         {
-            case  PlayerEventEnum.Run:
+            case  EntityEventEnum.Run:
                 return _run;
-            case  PlayerEventEnum.Attack:
+            case  EntityEventEnum.Attack:
                 return _attack;
-            case  PlayerEventEnum.Jump:
+            case  EntityEventEnum.Jump:
                 return _jump;
-            case  PlayerEventEnum.Crouch:
+            case  EntityEventEnum.Crouch:
                 return _crouch;
-            case  PlayerEventEnum.HeavyAttack:
+            case  EntityEventEnum.HeavyAttack:
                 return _heavyAttack;
-            case  PlayerEventEnum.Hurt:
+            case  EntityEventEnum.Hurt:
                 return _hurt;
-            case  PlayerEventEnum.Die:
+            case  EntityEventEnum.Die:
                 return _die;
-            case  PlayerEventEnum.Heal:
+            case  EntityEventEnum.Heal:
                 return _heal;
             default:
                 return null;

@@ -1,5 +1,5 @@
 
-public enum PlayerEventEnum
+public enum EntityEventEnum
 {
     Run,
     Idle,
