@@ -10,7 +10,7 @@ public class SoundView : MonoBehaviour, IView,IAudioEventListener
     public void PlayRunAudio()
     {
         _source.clip = _audio.GetClip(PlayerEventEnum.Run);
-        _source.volume = .3f;
+        _source.volume = .2f;
         _source.Play();
     }
     
