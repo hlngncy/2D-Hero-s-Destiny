@@ -7,7 +7,7 @@ public class SoundView : MonoBehaviour, IView
 {
     [SerializeField] private AudioSource _source;
     [SerializeField] private AudioManager _audio;
-    public void Run()
+    public void PlayRunAudio()
     {
         _source.clip = _audio.GetClip(PlayerEventEnum.Run);
         _source.volume = .3f;
@@ -15,37 +15,37 @@ public class SoundView : MonoBehaviour, IView
     }
     
 
-    public void Jump()
+    public void PlayJumpAudio()
     {
         _source.clip = _audio.GetClip(PlayerEventEnum.Jump);
         _source.Play();
     }
 
-    public void Crouch()
+    public void PlayCrouchAudio()
     {
         _source.clip = _audio.GetClip(PlayerEventEnum.Crouch);
         _source.Play();
     }
 
-    public void Hurt()
+    public void PlayHurtAudio()
     {
         _source.clip = _audio.GetClip(PlayerEventEnum.Hurt);
         _source.Play();
     }
 
-    public void Die()
+    public void PlayDieAudio()
     {
         _source.clip = _audio.GetClip(PlayerEventEnum.Die);
         _source.Play();
     }
 
-    public void Attack()
+    public void PlayAttackAudio()
     {
         _source.clip = _audio.GetClip(PlayerEventEnum.Attack);
         _source.Play();
     }
 
-    public void HeavyAttack()
+    public void PlayHeavyAttackAudio()
     {
         _source.clip = _audio.GetClip(PlayerEventEnum.HeavyAttack);
         _source.Play();

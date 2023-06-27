@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 7889
+  controlID: 13934
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 7890
+  controlID: 13935
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 7891
+  controlID: 13936
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1319,8 +1319,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 28b30000
-      m_LastClickedID: 0
+      m_SelectedIDs: 06f8ffff
+      m_LastClickedID: -2042
       m_ExpandedIDs: 06fbffff04650000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -1398,7 +1398,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 7830
+  controlID: 14116
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1448,7 +1448,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 604
-    width: 1043
+    width: 655
     height: 405
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1486,7 +1486,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 25944
+  m_LastSelectedObjectID: -2042
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1555,22 +1555,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - "Assets/Assets/sfx/SFx/Karakter/Y\xFCr\xFCme"
+    - Assets/Assets/sfx/SFx/Bat
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 53
   m_LastFolders:
-  - "Assets/Assets/sfx/SFx/Karakter/Y\xFCr\xFCme"
+  - Assets/Assets/sfx/SFx/Bat
   m_LastFoldersGridSize: 53
   m_LastProjectPath: C:\Users\hlngn\Documents\GitHub\2D-Hero-s-Destiny\Hero's Destiny
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 42b30000
-    m_LastClickedID: 45890
-    m_ExpandedIDs: 00000000ca6f0000cc6f0000ce6f0000d06f0000d26f0000d46f0000d66f0000d86f0000da6f0000dc6f0000e06f0000e26f0000e46f0000e86f0000ea6f0000ec6f0000ee6f0000f66f0000fa6f00000e7000009a7000009c700000cc700000a88700009c8b000022b3000030b3000048b30000ffffff7f
+    scrollPos: {x: 0, y: 60}
+    m_SelectedIDs: 2ab30000
+    m_LastClickedID: 45866
+    m_ExpandedIDs: 00000000ca6f0000cc6f0000ce6f0000d06f0000d26f0000d46f0000d66f0000d86f0000da6f0000dc6f0000e06f0000e26f0000e46f0000e86f0000ea6f0000ec6f0000ee6f0000f66f0000fa6f00000e7000009a7000009c700000cc700000a88700008e8b00009c8b000022b3000030b3000048b300004cb30000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1598,7 +1598,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ca6f0000cc6f0000ce6f0000d06f0000d26f0000d46f0000d66f0000d86f0000da6f0000dc6f0000e06f0000e26f0000e46f0000e86f0000ea6f0000ec6f0000ee6f0000f66f0000fa6f00000e7000009a7000009c700000cc700000a88700009c8b000022b30000ffffff7f
+    m_ExpandedIDs: 00000000ca6f0000cc6f0000ce6f0000d06f0000d26f0000d46f0000d66f0000d86f0000da6f0000dc6f0000e06f0000e26f0000e46f0000e86f0000ea6f0000ec6f0000ee6f0000f66f0000fa6f00000e7000009a7000009c700000cc700000a88700008e8b00009c8b000022b3000030b3000048b300004cb30000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1623,8 +1623,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 28b30000
-    m_LastClickedInstanceID: 45864
+    m_SelectedInstanceIDs: 06f8ffff
+    m_LastClickedInstanceID: -2042
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300000c610000e4760000f2a4000080ac000018ab0000685d0000e2660000166a0000886600003c6200000067000086860000b66100004ca400008465000010650000e2a70000b4ac000062900000f8af0000d4ab00008c850000506500002a980000ec7d0000f0680000ee680000306f0000bcbb00008cbb00007a6e0000c46d0000147f0000a28a0000fac900006a8a000048870000dc6800008e3a0100c0b50000926a0000006a0000248f0000986a0000d46900001a9800008ee700004c920000f0790000
     m_RenameOverlay:
