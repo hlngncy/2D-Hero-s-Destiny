@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip _crouch;
     [SerializeField] private AudioClip _die;
     [SerializeField] private AudioClip _hurt;
+    [SerializeField] private AudioClip _heal;
 
     public AudioClip GetClip(PlayerEventEnum playerEvent)
     {
@@ -28,6 +29,8 @@ public class AudioManager : MonoBehaviour
                 return _hurt;
             case  PlayerEventEnum.Die:
                 return _die;
+            case  PlayerEventEnum.Heal:
+                return _heal;
             default:
                 return null;
         }

@@ -22,9 +22,9 @@ public class DamageText : MonoBehaviour
     private void OnEnable()
     {
         _startScale = transform.localScale;
-        transform.localPosition = Vector3.zero;
-        transform.DOLocalMove(new Vector2(0,.2f), .5f).SetEase(Ease.OutExpo).OnComplete(
-            ()=> DamageTextPool.Instance.ReleaseDamageText(this,_startScale));
+        transform.localPosition = new Vector2(0,.2f);
+        transform.DOScale(_startScale * 1.3f, .3f).SetEase(Ease.OutBack).OnComplete(
+            ()=> DamageTextPool.Instance.ReleaseDamageText(this,_startScale)).SetDelay(.1f);
     }
 
     public void ChangeText(int damage)
@@ -36,7 +36,7 @@ public class DamageText : MonoBehaviour
         }
         else
         {
-            text.text = $"-{damage}";
+            text.text = $"-{damage.ToString()}";
             text.color = _damageColor;
         }
     }

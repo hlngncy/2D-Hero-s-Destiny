@@ -33,6 +33,7 @@ public abstract class PlayerController : MonoBehaviour,IController
     //views
     [SerializeField] private PlayerUIView _UIView;
     [SerializeField] private AnimationView _animationView;
+    [SerializeField] private SoundView _soundView;
 
     //models
     [SerializeField] private PlayerModel _playerModelObj;
@@ -45,6 +46,7 @@ public abstract class PlayerController : MonoBehaviour,IController
         _eventListeners.Add(_animationView);
         _playerEvents.EventListeners = _eventListeners;
         _playerEvents.AddListeners(_playerModelObj);
+        _playerEvents.AddListeners(_soundView);
         _playerEvents.AddListeners();
         _playerModel = _playerModelObj;
         _colliderSizeY = playerCollider.size.y;

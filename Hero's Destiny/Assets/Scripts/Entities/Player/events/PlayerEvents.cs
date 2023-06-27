@@ -13,7 +13,7 @@ public class PlayerEvents : MonoBehaviour
     private UnityEvent _heavyAttack = new UnityEvent();
     private UnityEvent _die = new UnityEvent();
     private UnityEvent<HealthInfo> _hurt = new UnityEvent<HealthInfo>();
-    //current health, difference(+,-)
+    private UnityEvent _heal = new UnityEvent();
 
     public List<IEventListener> EventListeners
     {
@@ -76,6 +76,11 @@ public class PlayerEvents : MonoBehaviour
         _die.AddListener(listener.OnDie);
         _hurt.AddListener(listener.OnHurt);
     }
+    public void AddListeners(IAudioEventListener listener)
+    {
+        _heal.AddListener(listener.PlayHealAudio);
+    }
+    
 
     public void OnRun()
     {
@@ -118,9 +123,14 @@ public class PlayerEvents : MonoBehaviour
     {
         _healthInfo.damage = damage;
         _healthInfo.currentHealth = currentHealth;
+        if(damage < 0 ) _heal.Invoke();
         _hurt.Invoke(_healthInfo);
     }
 
+}
+
+public interface ISoundListener
+{
 }
 
 

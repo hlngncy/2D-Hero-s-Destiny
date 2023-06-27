@@ -7,6 +7,7 @@ using UnityEngine;
 public class HealthPotion : MonoBehaviour
 {
     [SerializeField] private int _health;
+    [SerializeField] private AudioSource _source;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class HealthPotion : MonoBehaviour
         if (col.collider.CompareTag("Player"))
         {
             DamageActionManager.Instance.DoDamage(col.collider,-_health);
+            _source.Play();
             Destroy(gameObject);
         }
     }

@@ -8,5 +8,6 @@ public enum PlayerEventEnum
     Die,
     Hurt,
     Attack,
-    HeavyAttack
+    HeavyAttack,
+    Heal
 }
