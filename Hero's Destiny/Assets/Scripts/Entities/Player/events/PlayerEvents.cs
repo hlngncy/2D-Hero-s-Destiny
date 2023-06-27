@@ -23,7 +23,7 @@ public class PlayerEvents : MonoBehaviour
     private void Awake()
     {
         _healthInfo = new HealthInfo();
-        DontDestroyOnLoad(this.gameObject);
+        
     }
 
     public void AddListeners()
