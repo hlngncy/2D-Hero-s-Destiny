@@ -24,6 +24,7 @@ public class PlayerUIView : MonoBehaviour, IView, IEventListener
 
     public void OnRun()
     {
+        Debug.Log("run");
         //TODO Add vignette effect
     }
 

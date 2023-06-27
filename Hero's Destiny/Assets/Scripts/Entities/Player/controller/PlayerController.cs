@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +25,7 @@ public abstract class PlayerController : MonoBehaviour,IController
     private bool isCrouch = false;
     private bool _isDead;
     private float _colliderSizeY;
+    private Observable<bool> _hasHorizontalSpeed = new Observable<bool>();
     
     //events
     [SerializeField] private PlayerEvents _playerEvents;
@@ -33,11 +33,11 @@ public abstract class PlayerController : MonoBehaviour,IController
     //views
     [SerializeField] private PlayerUIView _UIView;
     [SerializeField] private AnimationView _animationView;
-    
+
     //models
     [SerializeField] private PlayerModel _playerModelObj;
 
-    private List<IEventListener> _eventListeners = new List<IEventListener>();
+    [SerializeField]private List<IEventListener> _eventListeners = new List<IEventListener>();
 
     private void Awake()
     {
@@ -56,6 +56,7 @@ public abstract class PlayerController : MonoBehaviour,IController
         _playerVelocity.y = _playerModel.JumpPower;
         _UIView.maxHealth = _playerModel.CurrentHealth.Value;
         _playerModel.CurrentHealth.OnValueChanged.AddListener(CheckHealth);
+        _hasHorizontalSpeed.OnValueChanged.AddListener(OnRun);
     }
 
 
@@ -73,19 +74,21 @@ public abstract class PlayerController : MonoBehaviour,IController
     
     private void FlipSprite()
     {
-        bool playerHasHorizontalSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
-        if (playerHasHorizontalSpeed)
+        _hasHorizontalSpeed.Value = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+        if (_hasHorizontalSpeed.Value)
         {
             transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f);
-            _playerEvents.OnRun();
         }
         else
         {
             _playerEvents.OnIdle();
         }
     }
-    
-    
+
+    private void OnRun(bool previous, bool current)
+    {
+        if (current != previous) _playerEvents.OnRun();
+    }
 
     public void Run()
     {
